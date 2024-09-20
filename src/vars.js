@@ -521,7 +521,7 @@ if (convertVersion(global['version']) < 9014){
 if (convertVersion(global['version']) < 100000){
     delete global.city['lumber'];
     delete global.city['stone'];
-    
+
     global.stats['dark'] = 0;
     if (global.race['Dark']){
         global.stats['dark'] = global.race['Dark'].count;
@@ -812,7 +812,7 @@ if (convertVersion(global['version']) < 101002){
             }
         }
     }
-    
+
     if (global.race['jtype'] && global.race['jtype'] === 'omnivore'){
         global.race['jtype'] = 'carnivore';
     }
@@ -857,7 +857,7 @@ if (convertVersion(global['version']) < 101012){
     if (global.civic['garrison']){
         global.civic.garrison['rate'] = 0;
     }
-} 
+}
 
 if (convertVersion(global['version']) < 101014){
     if (global.hasOwnProperty('settings') && global.settings.hasOwnProperty('msgFilters')){
@@ -1218,7 +1218,7 @@ if (!global.hasOwnProperty('prestige')){
 });
 
 if (!global.hasOwnProperty('power')){
-    global['power'] = [];       
+    global['power'] = [];
 }
 
 if (!global.hasOwnProperty('support')){
@@ -1501,19 +1501,19 @@ export function setupStats(){
     }
     if (!global.stats.hasOwnProperty('banana')){
         global.stats['banana'] = {
-            b1: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
-            b2: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
-            b3: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
-            b4: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
+            b1: { l: false, h: false, a: false, e: false, m: false, mg: false },
+            b2: { l: false, h: false, a: false, e: false, m: false, mg: false },
+            b3: { l: false, h: false, a: false, e: false, m: false, mg: false },
+            b4: { l: false, h: false, a: false, e: false, m: false, mg: false },
             b5: { l: false, h: false, a: false, e: false, m: false, mg: false }
         };
     }
     if (!global.stats.hasOwnProperty('endless_hunger')){
         global.stats['endless_hunger'] = {
-            b1: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
-            b2: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
-            b3: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
-            b4: { l: false, h: false, a: false, e: false, m: false, mg: false }, 
+            b1: { l: false, h: false, a: false, e: false, m: false, mg: false },
+            b2: { l: false, h: false, a: false, e: false, m: false, mg: false },
+            b3: { l: false, h: false, a: false, e: false, m: false, mg: false },
+            b4: { l: false, h: false, a: false, e: false, m: false, mg: false },
             b5: { l: false, h: false, a: false, e: false, m: false, mg: false }
         };
     }
@@ -2103,7 +2103,7 @@ window.soft_reset = function reset(source){
         source = source && source === 'replicator' ? 'replicator' : 'soft';
         gtag('event', 'reset', { 'end': source});
     } catch (err){}
-    
+
     if (!source){
         clearSavedMessages();
     }
@@ -2217,7 +2217,7 @@ function setRegionStates(reset){
         portal: ['fortress','badlands','pit','ruins','gate','lake','spire'],
         tau: ['home','red','roid','gas','gas2','star']
     };
-    
+
     Object.keys(regions).forEach(function(r){
         if (r === 'base'){
             regions[r].forEach(function(v){

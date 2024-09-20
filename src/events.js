@@ -303,7 +303,7 @@ export const events = {
             notrait: 'truepath'
         },
         type: 'major',
-        effect(){            
+        effect(){
             let killed = Math.floor(seededRandom(0,global.civic.garrison.wounded));
             let wounded = Math.floor(seededRandom(0,global.civic.garrison.workers - global.civic.garrison.wounded));
             if (global.race['instinct']){
@@ -523,7 +523,7 @@ export const events = {
                 global.civic.foreign[`gov${gov}`].act = 'none';
                 global.civic.foreign[`gov${gov}`].sab = 0;
             }
-            
+
             return loc('event_spy',[govTitle(gov)]);
         }
     },
@@ -906,7 +906,7 @@ function basicEvent(title,tech,func,cond){
 
 function slaveLoss(type,string){
     return {
-        reqs: { 
+        reqs: {
             trait: 'slaver',
             tech: 'slaves'
         },

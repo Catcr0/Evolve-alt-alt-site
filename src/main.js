@@ -5128,7 +5128,7 @@ function fastLoop(){
             let delta = (shock_base + tank_base) * global_multiplier * synd;
             modRes('Cipher', delta * time_multiplier);
         }
-        
+
         if(global.portal['oven_complete'] && p_on['oven_complete'] && !global.tech['dish_reset'] && global.portal['devilish_dish'].done >= 100){
             global.tech['dish_reset'] = 1;
             drawTech();
@@ -9976,7 +9976,7 @@ function midLoop(){
                 renderFortress();
             }
         }
-        
+
         if(global.race['fasting'] && global.portal['oven_complete']){
             let progress = 0;
             if(p_on['oven_complete']){

@@ -58,7 +58,7 @@ export function defineGovernment(define){
             }
         }
     });
-    
+
     government($(`#r_govern0`));
     taxRates($(`#r_govern0`));
 
@@ -79,7 +79,7 @@ export function defineGarrison(){
     var garrison = $('<div id="garrison" v-show="vis()" class="garrison tile is-child"></div>');
     $('#military').append(garrison);
     $('#military').append($(`<div id="fortress"></div>`));
-    
+
     buildGarrison(garrison,true);
     defineMad();
 }
@@ -229,10 +229,10 @@ export const govEffect = {
 function government(govern){
     var gov = $('<div id="govType" class="govType" v-show="vis()"></div>');
     govern.append(gov);
-    
+
     var type = $(`<div>${loc('civics_government_type')} <span id="govLabel" class="has-text-warning">{{ type | govern }}</span></div>`);
     gov.append(type);
-    
+
     var setgov = $(`<div></div>`);
     gov.append(setgov);
 
@@ -272,7 +272,7 @@ function government(govern){
                 global.civic.govern.fr = global.civic.govern.rev;
                 global.civic.govern.rev = 0;
             },
-            force(){                
+            force(){
                 return global.civic.govern.rev > 0 ? loc('civics_force_rev_desc') : loc('civics_force_rev_desc2');
             },
             vis(){
@@ -316,7 +316,7 @@ function drawGovModal(){
     if (trick.length > 0){
         $('#modalBoxTitle').append(trick);
     }
-    
+
     var body = $('<div id="govModal" class="modalBody max40"></div>');
     $('#modalBox').append(body);
 
@@ -725,7 +725,7 @@ function govPrice(gov){
     price *= 1 - global.civic.foreign[`gov${gov}`].unrest * 0.25 / 100;
     return +price.toFixed(0);
 }
-    
+
 export function checkControlling(gov){
     if (gov){
         return global.tech['world_control'] || global.civic.foreign[gov].occ || global.civic.foreign[gov].anx || global.civic.foreign[gov].buy;
@@ -789,7 +789,7 @@ function spyAction(sa,g){
 
 function drawEspModal(gov){
     $('#modalBox').append($(`<p id="modalBoxTitle" class="has-text-warning modalTitle">${loc('civics_espionage_actions')}</p>`));
-    
+
     var body = $('<div id="espModal" class="modalBody max40"></div>');
     $('#modalBox').append(body);
 
@@ -901,11 +901,11 @@ function drawEspModal(gov){
             else {
                 desc = loc(`civics_spy_${esp}_desc`,[govTitle(gov)]);
             }
-            
+
             let warn = '';
             if (
-                (esp === 'influence' && global.civic.foreign[`gov${gov}`].hstl === 0) || 
-                (esp === 'sabotage' && global.civic.foreign[`gov${gov}`].spy >= 2 && global.civic.foreign[`gov${gov}`].mil === 50) || 
+                (esp === 'influence' && global.civic.foreign[`gov${gov}`].hstl === 0) ||
+                (esp === 'sabotage' && global.civic.foreign[`gov${gov}`].spy >= 2 && global.civic.foreign[`gov${gov}`].mil === 50) ||
                 (esp === 'incite' && global.civic.foreign[`gov${gov}`].spy >= 4 && global.civic.foreign[`gov${gov}`].unrest === 100)
             ){
                 warn = `<div class="has-text-danger">${loc(`civics_spy_warning`)}</div>`;
@@ -982,17 +982,17 @@ function adjustTax(a,n){
 function taxRates(govern){
     var tax_rates = $('<div id="tax_rates" v-show="display" class="taxRate"></div>');
     govern.append(tax_rates);
-    
+
     var label = $(`<h3 id="taxRateLabel">${loc('civics_tax_rates')}</h3>`);
     tax_rates.append(label);
-    
+
     var tax_level = $('<span class="current" v-html="$options.filters.tax_level(tax_rate)"></span>');
     var sub = $(`<span role="button" aria-label="decrease taxes" class="sub has-text-success" @click="sub">&laquo;</span>`);
     var add = $(`<span role="button" aria-label="increase taxes" class="add has-text-danger" @click="add">&raquo;</span>`);
     tax_rates.append(sub);
     tax_rates.append(tax_level);
     tax_rates.append(add);
-    
+
     vBind({
         el: '#tax_rates',
         data: global.civic['taxes'],
@@ -1020,7 +1020,7 @@ function taxRates(govern){
             }
         }
     });
-    
+
     popover('taxRateLabel', function(){
             return loc('civics_tax_rates_desc');
         },
@@ -1118,7 +1118,7 @@ export function buildGarrison(garrison,full){
 
         barracks.append($(`<div class="hire"><button v-show="g.mercs" class="button first hmerc" @click="hire">${loc('civics_garrison_hire_mercenary')}</button><div>`));
     }
-    
+
     if (full){
         let egg8 = '';
         if (global.tech['isolation']){
@@ -1137,7 +1137,7 @@ export function buildGarrison(garrison,full){
     if ((!global.tech['world_control'] || global.race['truepath']) && !global.race['cataclysm'] && !global.tech['isolation']){
         var tactics = $(`<div id="${full ? 'tactics' : 'c_tactics'}" v-show="g.display" class="tactics"><span>${loc('civics_garrison_campaign')}</span></div>`);
         wrap.append(tactics);
-            
+
         var strategy = $('<span class="current tactic">{{ g.tactic | tactics }}</span>');
         var last = $('<span role="button" aria-label="easier campaign" class="sub" @click="last">&laquo;</span>');
         var next = $('<span role="button" aria-label="harder campaign" class="add" @click="next">&raquo;</span>');
@@ -1147,7 +1147,7 @@ export function buildGarrison(garrison,full){
 
         var battalion = $(`<div id="${full ? 'battalion' : 'c_battalion'}" v-show="g.display" class="tactics"><span>${loc('civics_garrison_battalion')}</span></div>`);
         wrap.append(battalion);
-            
+
         var armysize = $('<span class="current bat">{{ g.raid }}</span>');
         var alast = $('<span role="button" aria-label="remove soldiers from campaign" class="sub" @click="aLast">&laquo;</span>');
         var anext = $('<span role="button" aria-label="add soldiers to campaign" class="add" @click="aNext">&raquo;</span>');
@@ -1167,7 +1167,7 @@ export function buildGarrison(garrison,full){
         }
     }
 
-    let bindData = { 
+    let bindData = {
         g: global.civic.garrison,
         g0: global.civic.foreign.gov0,
         g1: global.civic.foreign.gov1,
@@ -1190,12 +1190,12 @@ export function buildGarrison(garrison,full){
             },
             next(){
                 if (global.civic.garrison.tactic < 4){
-                    global.civic.garrison.tactic++; 
+                    global.civic.garrison.tactic++;
                 }
             },
             last(){
                 if (global.civic.garrison.tactic > 0){
-                    global.civic.garrison.tactic-- 
+                    global.civic.garrison.tactic--
                 }
             },
             aNext(){
@@ -1388,8 +1388,8 @@ function battleAssessment(gov){
         return loc('civics_garrison_secede_desc');
     }
     else if (
-        (global.civic.garrison.tactic <= 1 && global.civic.foreign[`gov${gov}`].spy < 1) || 
-        (global.civic.garrison.tactic >= 2 && global.civic.garrison.tactic <= 3 && global.civic.foreign[`gov${gov}`].spy < 2) || 
+        (global.civic.garrison.tactic <= 1 && global.civic.foreign[`gov${gov}`].spy < 1) ||
+        (global.civic.garrison.tactic >= 2 && global.civic.garrison.tactic <= 3 && global.civic.foreign[`gov${gov}`].spy < 2) ||
         (global.civic.garrison.tactic === 4 && global.civic.foreign[`gov${gov}`].spy < 3)
         ){
         return loc('civics_garrison_no_spy');
@@ -1452,7 +1452,7 @@ function war_campaign(gov){
     else if (global.civic.garrison.raid < 0){
         global.civic.garrison.raid = 0;
     }
-    
+
     if (global.civic.garrison.raid === 0){
         messageQueue(loc('civics_garrison_campaign_no_soldier'),'warning',false,['combat']);
         return;
@@ -1751,7 +1751,7 @@ function war_campaign(gov){
         loot = loot.slice(0,-2);
         loot = loot + '.';
         messageQueue(loot,'warning',false,['combat']);
-        
+
         let revive = 0;
         if (global.race['revive']){
             switch (global.city.calendar.temp){

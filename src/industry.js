@@ -1394,7 +1394,7 @@ function loadReplicator(parent,bind){
 
         let content = $(`<div class="doublePane"></div>`);
         parent.append(content);
-        
+
         if (bind){
         let values = ``;
             Object.keys(atomic_mass).forEach(function(res){
@@ -1427,7 +1427,7 @@ function loadReplicator(parent,bind){
         power.append(current);
         power.append(more);
 
-        parent.append(`<div class="topPad">{{ res | result }}</div>`); 
+        parent.append(`<div class="topPad">{{ res | result }}</div>`);
 
         vBind({
             el: bind ? bind : '#specialModal',

@@ -12198,7 +12198,7 @@ const techs = {
             Knowledge(){ return 450000; },
         },
         effect(){ return loc('tech_water_mining_effect',[
-            planetName().enceladus, 
+            planetName().enceladus,
             races[global.race.species].home,
             global.resource.Water.name
         ]); },

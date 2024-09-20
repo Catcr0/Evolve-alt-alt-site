@@ -1163,7 +1163,7 @@ export function powerModifier(energy){
 
 export function powerCostMod(energy){
     if (global.race['emfield']){
-        return +(energy * 1.5).toFixed(2);
+        return parseFloat((energy * 1.5).toFixed(2));
     }
     return energy;
 }

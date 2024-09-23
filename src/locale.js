@@ -73,11 +73,11 @@ function getString(locale) {
             console.error(e,e.stack);
         }
         const defSize = defaultString.length;
-        
+
         if (themeString) {
             Object.assign(defaultString, themeString);
         }
-        
+
         if (defaultString.length != defSize && global.settings.expose){
             console.error(`string pack has extra keys.`);
         }

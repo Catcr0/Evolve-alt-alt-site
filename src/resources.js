@@ -203,7 +203,7 @@ export function craftCost(manual=false){
 
 export const craftingRatio = (function(){
     var crafting = {};
-    
+
     return function (res,type,recalc){
         if (recalc){
             let noEarth = global.race['cataclysm'] || global.race['orbit_decayed'] ? true : false;
@@ -527,7 +527,7 @@ export const craftingRatio = (function(){
                 multiplier: multiplier,
                 add_bd: add_bd,
                 multi_bd: multi_bd
-                
+
             }
             return craft_total;
         }
@@ -656,7 +656,7 @@ export function defineResources(wiki){
         loadResource('RNA',wiki,base,1,false);
         loadResource('DNA',wiki,base,1,false);
     }
-    
+
     loadResource('Money',wiki,1000,1,false,false,'success');
     loadResource(global.race.species,wiki,0,0,false,false,'warning');
     loadResource('Slave',wiki,0,0,false,false,'warning');
@@ -780,7 +780,7 @@ function loadResource(name,wiki,max,rate,tradable,stackable,color){
     if (name === 'Mana'){
         global['resource'][name]['gen'] = 0;
         global['resource'][name]['gen_d'] = 0;
-    }  
+    }
 
     global['resource'][name]['stackable'] = stackable;
     if (!global['resource'][name]['crates']){
@@ -807,7 +807,7 @@ function loadResource(name,wiki,max,rate,tradable,stackable,color){
     else if (max !== -1 || (max === -1 && rate === 0 && global.race['no_craft']) || name === 'Scarletite' || name === 'Quantium'){
         res_container.append($('<span></span>'));
     }
-    
+
     let infopops = false;
     if (rate !== 0 || (max === -1 && rate === 0 && global.race['no_craft']) || name === 'Scarletite' || name === 'Quantium'){
         res_container.append($(`<span id="inc${name}" class="diff" :aria-label="resRate('${name}')">{{ diff | diffSize }} /s</span>`));
@@ -829,16 +829,16 @@ function loadResource(name,wiki,max,rate,tradable,stackable,color){
     else {
         res_container.append($(`<span></span>`));
     }
-    
+
     $('#resources').append(res_container);
 
     var modal = {
             template: '<div id="modalBox" class="modalBox"></div>'
         };
-    
+
     vBind({
         el: `#res${name}`,
-        data: global['resource'][name], 
+        data: global['resource'][name],
         filters: {
             size: function (value){
                 return value ? sizeApproximation(value,0) : value;
@@ -863,7 +863,7 @@ function loadResource(name,wiki,max,rate,tradable,stackable,color){
                     parent: this,
                     component: modal
                 });
-                
+
                 var checkExist = setInterval(function(){
                    if ($('#modalBox').length > 0) {
                       clearInterval(checkExist);
@@ -921,7 +921,7 @@ function loadResource(name,wiki,max,rate,tradable,stackable,color){
                 let vol = inc[i];
                 let bonus = +(craftingRatio(res,'manual').multiplier * 100).toFixed(0);
                 popper.append($(`<div class="has-text-info">${loc('manual_crafting_hover_bonus',[bonus.toLocaleString(),global.resource[res].name])}</div>`));
-                
+
                 let craft_costs = craftCost(true);
                 let crafts = $(`<div><span class="has-text-success">${loc('manual_crafting_hover_craft')} </span></div>`);
                 let num_crafted = 0;
@@ -951,10 +951,10 @@ function loadResource(name,wiki,max,rate,tradable,stackable,color){
                 }
                 popper.append(crafts);
                 popper.append(costs);
-                
+
                 return popper;
             }
-            
+
             craftingPopover(`inc${name}${inc[i]}`,name,'manual',extra);
         }
     }
@@ -1011,7 +1011,7 @@ export function setResourceName(name){
     else {
         global.resource[name].name = name === 'Money' ? '$' : loc(`resource_${name}_name`);
     }
-    
+
     if (eventActive('fool',2022)){
         switch(name){
             case 'Lumber':
@@ -1174,7 +1174,7 @@ function loadSpecialResource(name,color) {
 
     var res_container = $(`<div id="res${name}" class="resource" v-show="count"><span class="res has-text-${color}">${loc(`resource_${name}_name`)}</span><span class="count">{{ count | round }}</span></div>`);
     $('#resources').append(res_container);
-    
+
     vBind({
         el: `#res${name}`,
         data: global.prestige[name],
@@ -1197,10 +1197,10 @@ function loadSpecialResource(name,color) {
                     let plasmidSpatial = spatialReasoning(1,'plasmid');
                     if (plasmidSpatial > 1){
                         desc.append($(`<span> ${loc(`resource_Plasmid_desc2`,[+((plasmidSpatial - 1) * 100).toFixed(2)])}</span>`));
-                    }   
+                    }
                 }
                 break;
-    
+
             case 'AntiPlasmid':
                 desc.append($(`<span>${loc(`resource_${name}_desc`,[global.prestige.AntiPlasmid.count, +(plasmidBonus('antiplasmid') * 100).toFixed(2)])}</span>`));
                 let antiSpatial = spatialReasoning(1,'anti');
@@ -1210,7 +1210,7 @@ function loadSpecialResource(name,color) {
                     }
                 }
                 break;
-    
+
             case 'Phage':
                 desc.append($(`<span>${loc(global.prestige.AntiPlasmid.count > 0 ? `resource_Phage_desc2` : `resource_Phage_desc`,[250 + global.prestige.Phage.count])}</span>`));
                 let phageSpatial = spatialReasoning(1,'phage');
@@ -1220,28 +1220,28 @@ function loadSpecialResource(name,color) {
                     }
                 }
                 break;
-    
+
             case 'Dark':
                 switch (global.race.universe){
                     case 'standard':
                         desc.append($(`<span>${loc(`resource_${name}_desc_s`,[+((darkEffect('standard') - 1) * 100).toFixed(2)])}</span>`));
                         break;
-    
+
                     case 'evil':
                         desc.append($(`<span>${loc(`resource_${name}_desc_e`,[+((darkEffect('evil') - 1) * 100).toFixed(2)])}</span>`));
                         break;
-    
+
                     case 'micro':
                         desc.append($(`<span>${loc(`resource_${name}_desc_m`,[darkEffect('micro',false),darkEffect('micro',true)])}</span>`));
                         break;
-    
+
                     case 'heavy':
                         let hDE = darkEffect('heavy');
                         let space = 0.25 + (0.5 * hDE);
                         let int = 0.2 + (0.3 * hDE);
                         desc.append($(`<span>${loc(`resource_${name}_desc_h`,[+(space * 100).toFixed(4),+(int * 100).toFixed(4)])}</span>`));
                         break;
-    
+
                     case 'antimatter':
                         desc.append($(`<span>${loc(`resource_${name}_desc_a`,[+((darkEffect('antimatter') - 1) * 100).toFixed(2)])}</span>`));
                         break;
@@ -1251,7 +1251,7 @@ function loadSpecialResource(name,color) {
                         break;
                 }
                 break;
-    
+
             case 'Harmony':
                 desc.append($(`<span>${loc(`resource_${name}_desc`,[global.race.universe === 'standard' ? 0.1 : 1, harmonyEffect()])}</span>`));
                 break;
@@ -1309,7 +1309,7 @@ export function marketItem(mount,market_item,name,color,full){
     if (!global.race['no_trade']){
         market_item.append($(`<span class="buy"><span class="has-text-success">${loc('resource_market_buy')}</span></span>`));
         market_item.append($(`<span role="button" class="order" @click="purchase('${name}')">\${{ r.value | buy }}</span>`));
-        
+
         market_item.append($(`<span class="sell"><span class="has-text-danger">${loc('resource_market_sell')}</span></span>`));
         market_item.append($(`<span role="button" class="order" @click="sell('${name}')">\${{ r.value | sell }}</span>`));
     }
@@ -1323,10 +1323,10 @@ export function marketItem(mount,market_item,name,color,full){
         trade.append($(`<span role="button" class="zero has-text-advanced" @click="zero('${name}')">${loc('cancel_routes')}</span>`));
         tradeRouteColor(name);
     }
-    
+
     vBind({
         el: mount,
-        data: { 
+        data: {
             r: global.resource[name],
             m: global.city.market
         },
@@ -1606,13 +1606,13 @@ export function galacticTrade(modal){
 
             offer.append($(`<span class="offer-item has-text-success">${global.resource[offers[i].buy.res].name}</span>`));
             offer.append($(`<span class="offer-vol has-text-advanced">+{{ '${i}' | t_vol }}/s</span>`));
-            
+
             offer.append($(`<span class="offer-item has-text-danger">${global.resource[offers[i].sell.res].name}</span>`));
             offer.append($(`<span class="offer-vol has-text-caution">-{{ '${i}' | s_vol }}/s</span>`));
 
             let trade = $(`<span class="trade"><span class="has-text-warning">${loc('resource_market_routes')}</span></span>`);
             offer.append(trade);
-            
+
             let assign = loc('galaxy_freighter_assign',[global.resource[offers[i].buy.res].name,global.resource[offers[i].sell.res].name]);
             let unassign = loc('galaxy_freighter_unassign',[global.resource[offers[i].buy.res].name,global.resource[offers[i].sell.res].name]);
             trade.append($(`<b-tooltip :label="desc('${unassign}')" position="is-bottom" size="is-small" multilined animated><span role="button" aria-label="${unassign}" class="sub has-text-danger" @click="less('${i}')"><span>-</span></span></b-tooltip>`));
@@ -1668,7 +1668,7 @@ export function galacticTrade(modal){
                 }
             },
             desc(s){
-                return s; 
+                return s;
             }
         },
         filters: {
@@ -1934,7 +1934,7 @@ export function craftingPopover(id,res,type,extra){
         let bd = $(`<div class="resBreakdown"><div class="has-text-info">{{ res.name | namespace }}</div></div>`);
         let table = $(`<div class="parent"></div>`);
         bd.append(table);
-        
+
         let craft_total = craftingRatio(res,type);
 
         let col1 = $(`<div></div>`);
@@ -1961,7 +1961,7 @@ export function craftingPopover(id,res,type,extra){
                 col1.append(`<div class="modal_bd"><span>${label}</span><span class="has-text-${type}">{{ craft.multi_bd['${mod}'] | translate }}</span></div>`);
             }
         });
-        
+
         let col2 = $(`<div class="col"></div>`);
         let title = $(`<div class="has-text-info">${loc(`craft_tools_multi`)}</div>`);
         col2.append(title);
@@ -1984,7 +1984,7 @@ export function craftingPopover(id,res,type,extra){
         if (breakdown.p.consume && breakdown.p.consume[res]){
             let col3 = $(`<div class="col"></div>`);
             let count = 0;
-            Object.keys(breakdown.p.consume[res]).forEach(function (mod){                
+            Object.keys(breakdown.p.consume[res]).forEach(function (mod){
                 let val = breakdown.p.consume[res][mod];
                 if (val != 0 && !isNaN(val)){
                     count++;
@@ -1998,11 +1998,11 @@ export function craftingPopover(id,res,type,extra){
                 table.append(col3);
             }
         }
-        
+
         if (global['resource'][res].diff < 0 && global['resource'][res].amount > 0){
             bd.append(`<div class="modal_bd sum"><span>${loc('to_empty')}</span><span class="has-text-danger">{{ res.amount | counter }}</span></div>`);
         }
-        
+
         if (extra){
             bd.append(`<div class="modal_bd sum"></div>`);
             bd.append(extra);
@@ -2017,12 +2017,12 @@ export function craftingPopover(id,res,type,extra){
                     res: global['resource'][res],
                     'consume': breakdown.p['consume'],
                     craft: craftingRatio(res,type)
-                }, 
+                },
                 filters: {
                     translate(raw){
                         let type = raw[raw.length -1];
                         let val = parseFloat(raw.slice(0,-1));
-                        let precision = (val > 0 && val < 1) || (val < 0 && val > -1) ? 4 
+                        let precision = (val > 0 && val < 1) || (val < 0 && val > -1) ? 4
                             : ((val > 0 && val < 10) || (val < 0 && val > -10) ? 3 : 2);
                         val = +(val).toFixed(precision);
                         let suffix = type === '%' ? '%' : '';
@@ -2039,7 +2039,7 @@ export function craftingPopover(id,res,type,extra){
                     counter(val){
                         let rate = -global['resource'][res].diff;
                         let time = +(val / rate).toFixed(0);
-                        
+
                         if (time > 60){
                             let secs = time % 60;
                             let mins = (time - secs) / 60;
@@ -2084,7 +2084,7 @@ function breakdownPopover(id,name,type){
         let table = $(`<div class="parent"></div>`);
         bd.append(table);
         let prevCol = false;
-        
+
         if (breakdown[type][name] && !(global.race.species === name && type === 'p')){
             let col1 = $(`<div></div>`);
             table.append(col1);
@@ -2111,7 +2111,7 @@ function breakdownPopover(id,name,type){
         if (breakdown[type].consume && breakdown[type].consume[name]){
             let col2 = $(`<div class="${prevCol ? 'col' : ''}"></div>`);
             let count = 0;
-            Object.keys(breakdown[type].consume[name]).forEach(function (mod){                
+            Object.keys(breakdown[type].consume[name]).forEach(function (mod){
                 let val = breakdown[type].consume[name][mod];
                 if (val != 0 && !isNaN(val)){
                     count++;
@@ -2141,12 +2141,12 @@ function breakdownPopover(id,name,type){
                     [name]: breakdown[type][name],
                     'consume': breakdown[type]['consume'],
                     res: global['resource'][name]
-                }, 
+                },
                 filters: {
                     translate(raw){
                         let type = raw[raw.length -1];
                         let val = parseFloat(raw.slice(0,-1));
-                        let precision = (val > 0 && val < 1) || (val < 0 && val > -1) ? 4 
+                        let precision = (val > 0 && val < 1) || (val < 0 && val > -1) ? 4
                             : ((val > 0 && val < 10) || (val < 0 && val > -10) ? 3 : 2);
                         let suffix = type === '%' ? '%' : '';
                         if (val > 0){
@@ -2170,11 +2170,11 @@ function breakdownPopover(id,name,type){
                             let gap = global['resource'][name].max - val;
                             time = +(gap / rate).toFixed(0);
                         }
-    
+
                         if (time === Infinity || Number.isNaN(time)){
                             return 'Never';
                         }
-                        
+
                         if (time > 60){
                             let secs = time % 60;
                             let mins = (time - secs) / 60;
@@ -2348,7 +2348,7 @@ function buildContainer(num){
 
 function drawModal(name){
     $('#modalBox').append($('<p id="modalBoxTitle" class="has-text-warning modalTitle">{{ name }} - {{ amount | size }}/{{ max | size }}</p>'));
-    
+
     let body = $('<div class="modalBody crateModal"></div>');
     $('#modalBox').append(body);
 
@@ -2365,23 +2365,23 @@ function drawModal(name){
             $('#modalBoxTitle').prepend(trick);
         }
     }
-    
+
     let crates = $('<div id="modalCrates" class="crates"></div>');
     body.append(crates);
-    
+
     crates.append($(`<div class="crateHead"><span>${loc('resource_modal_crate_owned')} {{ crates.amount }}/{{ crates.max }}</span><span>${loc('resource_modal_crate_assigned')} {{ res.crates }}</span></div>`));
-    
+
     let buildCr = $(`<button class="button construct" @click="buildCrate()">${loc('resource_modal_crate_construct')}</button>`);
     let removeCr = $(`<button class="button unassign" @click="subCrate('${name}')">${loc('resource_modal_crate_unassign')}</button>`);
     let addCr = $(`<button class="button assign" @click="addCrate('${name}')">${loc('resource_modal_crate_assign')}</button>`);
-    
+
     crates.append(buildCr);
     crates.append(removeCr);
     crates.append(addCr);
-    
+
     vBind({
         el: `#modalCrates`,
-        data: { 
+        data: {
             crates: global['resource']['Crates'],
             res: global['resource'][name],
         },
@@ -2397,24 +2397,24 @@ function drawModal(name){
             }
         }
     });
-    
+
     if (global.resource.Containers.display){
         let containers = $('<div id="modalContainers" class="crates divide"></div>');
         body.append(containers);
-        
+
         containers.append($(`<div class="crateHead"><span>${loc('resource_modal_container_owned')} {{ containers.amount }}/{{ containers.max }}</span><span>${loc('resource_modal_container_assigned')} {{ res.containers }}</span></div>`));
 
         let buildCon = $(`<button class="button construct" @click="buildContainer()">${loc('resource_modal_container_construct')}</button>`);
         let removeCon = $(`<button class="button unassign" @click="removeContainer('${name}')">${loc('resource_modal_container_unassign')}</button>`);
         let addCon = $(`<button class="button assign" @click="addContainer('${name}')">${loc('resource_modal_container_assign')}</button>`);
-        
+
         containers.append(buildCon);
         containers.append(removeCon);
         containers.append(addCon);
-        
+
         vBind({
             el: `#modalContainers`,
-            data: { 
+            data: {
                 containers: global['resource']['Containers'],
                 res: global['resource'][name],
             },
@@ -2434,7 +2434,7 @@ function drawModal(name){
 
     vBind({
         el: `#modalBoxTitle`,
-        data: global['resource'][name], 
+        data: global['resource'][name],
         filters: {
             size: function (value){
                 return sizeApproximation(value,0);
@@ -2591,7 +2591,7 @@ function initStorage(){
     let store = $(`<div id="createHead" class="storage-header"><h2 class="is-sr-only">${loc('tab_storage')}</h2></div>`);
     clearElement($('#resStorage'));
     $('#resStorage').append(store);
-    
+
     if (global.resource['Crates'] && global.resource['Containers']){
         store.append($(`<b-tooltip :label="buildCrateDesc()" position="is-bottom" class="crate" animated multilined><button :aria-label="buildCrateDesc()" v-show="cr.display" class="button" @click="crate">${loc('resource_modal_crate_construct')}</button></b-tooltip>`));
         store.append($(`<b-tooltip :label="buildContainerDesc()" position="is-bottom" class="container" animated multilined><button :aria-label="buildContainerDesc()" v-show="cn.display" class="button" @click="container">${loc('resource_modal_container_construct')}</button></b-tooltip>`));
@@ -2938,7 +2938,7 @@ export const spatialReasoning = (function(){
         if (!spatial[tkey]){
             spatial[tkey] = {};
         }
-        if (!spatial[tkey][key] || recalc){            
+        if (!spatial[tkey][key] || recalc){
             let modifier = 1;
             let noEarth = global.race['cataclysm'] || global.race['orbit_decayed'] ? true : false;
             if (global.genes['store']){
@@ -3120,7 +3120,7 @@ export const plasmidBonus = (function (){
 
         if (!plasma[key]){
             let standard = 0;
-            let anti = 0; 
+            let anti = 0;
             if (global.race.universe !== 'antimatter' || global.genes['bleed']){
                 let plasmids = global.race['no_plasmid'] ? Math.min(global.race.p_mutation, global.prestige.Plasmid.count) : global.prestige.Plasmid.count;
                 if (global.race.universe === 'antimatter' && global.genes['bleed']){
@@ -3183,7 +3183,7 @@ export const plasmidBonus = (function (){
             }
 
             plasma = {};
-            let final = (1 + standard) * (1 + anti) - 1;            
+            let final = (1 + standard) * (1 + anti) - 1;
             plasma[key] = [final,standard,anti];
         }
 

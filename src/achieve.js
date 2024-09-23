@@ -615,7 +615,7 @@ export function checkAchievements(){
         let genus = {};
         let rCnt = 0;
         let equilProgress = Array(5+1).fill(0); // Add 1 extra element to fill the "rank 0" position
-        Object.keys(global.pillars).forEach(function(race){                
+        Object.keys(global.pillars).forEach(function(race){
             if (races[race]){
                 if (!genus[races[race].type] || global.pillars[race] > genus[races[race].type]){
                     genus[races[race].type] = global.pillars[race];
@@ -818,7 +818,7 @@ export function checkAchievements(){
     else if (!global.settings.boring && date.getMonth() === 11 && date.getDate() == 25){
         unlockFeat('xmas',global.race.universe === 'micro' ? true : false);
     }
-    
+
     if (!global.settings.boring && date.getMonth() === 3 && date.getDate() >= 1 && date.getDate() <= 3 && global.stats.feat.hasOwnProperty('fool') && global.stats.feat.fool > 0){
         unlockFeat('fool',global.race.universe === 'micro' ? true : false);
     }
@@ -1827,7 +1827,7 @@ export const perkList = {
         },
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_genetic_memory_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_animus_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_divine_remembrance_title`)}</span>`,
@@ -1848,7 +1848,7 @@ export const perkList = {
         },
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_spatial_reasoning_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_spatial_superiority_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_spatial_supremacy_title`)}</span>`,
@@ -1927,7 +1927,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_morphogenesis_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_recombination_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_homologous_recombination_title`)}</span>`,
@@ -1987,7 +1987,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_artificer_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_detail_oriented_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_rigorous_title`)}</span>`
@@ -2019,7 +2019,7 @@ export const perkList = {
         },
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_synthesis_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_karyokinesis_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_cytokinesis_title`)}</span>`
@@ -2068,7 +2068,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_hardened_genes_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_unlocked_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_universal_title`)}</span>`,
@@ -2109,7 +2109,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_ancients_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_faith_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_devotion_title`)}</span>`,
@@ -2165,7 +2165,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_geographer_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_architect_title`)}</span>`
                 ].join(', ')
@@ -2183,7 +2183,7 @@ export const perkList = {
         },
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_mitosis_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_metaphase_title`)}</span>`
                 ].join(', ')
@@ -2212,7 +2212,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_mutation_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_transformation_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_metamorphosis_title`)}</span>`
@@ -2250,7 +2250,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_bleeding_effect_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_synchronicity_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_astral_awareness_title`)}</span>`
@@ -2289,7 +2289,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_crispr_note`,[`<span class="has-text-caution">${loc(`arpa_genepool_blood_remembrance_title`)}</span>`]),
-            loc(`wiki_perks_crispr_note_upgrade`,[ 
+            loc(`wiki_perks_crispr_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_genepool_blood_sacrifice_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_genepool_essence_absorber_title`)}</span>`
@@ -2320,7 +2320,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_blood_note`,[`<span class="has-text-caution">${loc(`arpa_blood_purify_title`)}</span>`]),
-            loc(`wiki_perks_blood_note_upgrade`,[ 
+            loc(`wiki_perks_blood_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_blood_chum_title`)}</span>`
                 ].join(', ')
@@ -2468,7 +2468,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_blood_note`,[`<span class="has-text-caution">${loc(`arpa_blood_prepared_title`)}</span>`]),
-            loc(`wiki_perks_blood_note_upgrade`,[ 
+            loc(`wiki_perks_blood_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_blood_compact_title`)}</span>`
                 ].join(', ')
@@ -2505,7 +2505,7 @@ export const perkList = {
         ],
         notes: [
             loc(`wiki_perks_blood_note`,[`<span class="has-text-caution">${loc(`arpa_blood_unbound_title`)}</span>`]),
-            loc(`wiki_perks_blood_note_upgrade`,[ 
+            loc(`wiki_perks_blood_note_upgrade`,[
                 [
                     `<span class="has-text-caution">${loc(`arpa_blood_unbound_resistance_title`)}</span>`,
                     `<span class="has-text-caution">${loc(`arpa_blood_shadow_war_title`)}</span>`,

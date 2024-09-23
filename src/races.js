@@ -176,7 +176,7 @@ export const traits = {
         desc: loc('trait_adaptable'),
         type: 'genus',
         val: 3,
-        vars(r){ 
+        vars(r){
             switch (r || global.race.adaptable || 1){
                 case 0.25:
                     return [3];
@@ -196,7 +196,7 @@ export const traits = {
         desc: loc('trait_wasteful'),
         type: 'genus',
         val: -3,
-        vars(r){ 
+        vars(r){
             switch (r || global.race.wasteful || 1){
                 case 0.25:
                     return [14];
@@ -222,7 +222,7 @@ export const traits = {
         desc: loc('trait_carnivore'),
         type: 'genus',
         val: 3,
-        vars(r){ 
+        vars(r){
             // [Rot Percent]
             switch (r || global.race.carnivore || 1){
                 case 0.25:
@@ -264,7 +264,7 @@ export const traits = {
         desc: loc('trait_cautious'),
         type: 'genus',
         val: -2,
-        vars(r){ 
+        vars(r){
             switch (r || global.race.cautious || 1){
                 case 0.25:
                     return [14];
@@ -3495,7 +3495,7 @@ export const races = {
         home: loc('race_bearkin_home'),
         entity: loc('race_bearkin_entity'),
         traits: {
-            
+
         },
         solar: {
             red: loc('race_bearkin_solar_red'),
@@ -3514,7 +3514,7 @@ export const races = {
         home: loc('race_porkenari_home'),
         entity: loc('race_porkenari_entity'),
         traits: {
-            
+
         },
         solar: {
             red: loc('race_porkenari_solar_red'),
@@ -3533,7 +3533,7 @@ export const races = {
         home: loc('race_hedgeoken_home'),
         entity: loc('race_hedgeoken_entity'),
         traits: {
-            
+
         },
         solar: {
             red: loc('race_hedgeoken_solar_red'),
@@ -5241,7 +5241,7 @@ export function cleanAddTrait(trait){
         case 'deconstructor':
             global.resource.Nanite.display = true;
             checkPurgatory('city','nanite_factory',{ count: 1,
-                Lumber: 0, Chrysotile: 0, Stone: 0, Crystal: 0, 
+                Lumber: 0, Chrysotile: 0, Stone: 0, Crystal: 0,
                 Furs: 0, Copper: 0, Iron: 0, Aluminium: 0,
                 Cement: 0, Coal: 0, Oil: 0, Uranium: 0,
                 Steel: 0, Titanium: 0, Alloy: 0, Polymer: 0,
@@ -5645,7 +5645,7 @@ export function traitSkin(type,trait){
                 promiscuous: global.race['artifical'] ? loc('trait_promiscuous_synth_name') : traits['promiscuous'].name,
             };
             return trait ? (name[trait] ? name[trait] : traits[trait].name) : name;
-        } 
+        }
         case 'desc':
         {
             let desc = {
@@ -5920,7 +5920,7 @@ function psychicBoost(parent){
             scrollMenu += `<b-radio-button v-model="b.r" native-value="${res}">${global.resource[res].name}</b-radio-button>`;
         }
     });
-    content.append(`<div id="psyhscrolltarget" class="left hscroll"><b-field class="buttonList">${scrollMenu}</b-field></div>`); 
+    content.append(`<div id="psyhscrolltarget" class="left hscroll"><b-field class="buttonList">${scrollMenu}</b-field></div>`);
 
     container.append(`<div><b-button v-html="$options.filters.boost(b.r)" @click="boostVal()"></b-button></div>`);
 
@@ -5934,7 +5934,7 @@ function psychicBoost(parent){
         channel.append(add);
         container.append(channel);
     }
-    
+
     let cost = global.tech.psychic >= 5 ? 60 : 75;
     let rank = global.stats.achieve['nightmare'] && global.stats.achieve.nightmare['mg'] ? global.stats.achieve.nightmare.mg : 0;
     vBind({

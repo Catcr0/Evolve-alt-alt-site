@@ -1634,7 +1634,7 @@ const tauCetiModules = {
                 let containers = global.tech['isolation'] ? 900 : 250;
                 let fuel = +($(this)[0].support_fuel().a).toFixed(1);
                 let desc = `<div class="has-text-caution">${loc('tau_new_support',[$(this)[0].support(), races[global.race.species].home])}</div>`;
-                
+
                 if (!global.race['lone_survivor']){
                     desc = desc + `<div>${loc('plus_max_citizens',[pop])}</div>`;
                 }
@@ -1647,13 +1647,13 @@ const tauCetiModules = {
                 }
 
                 desc = desc + `<div>${loc('tau_home_colony_effect',[50,races[global.race.species].home])}</div>`;
-                
+
                 if (global.tech['isolation']){
                     let gasVal = govActive('gaslighter',0);
                     let mVal = (gasVal ? gasVal + global.tech.broadcast : global.tech.broadcast) * 2;
                     desc = desc + `<div>${loc('space_red_vr_center_effect1',[mVal])}</div>`;
                 }
-                
+
                 desc = desc + `<div>${loc('plus_max_resource',[containers,loc('resource_Crates_name')])}</div><div>${loc('plus_max_resource',[containers,loc('resource_Containers_name')])}</div>`;
 
                 if (global.race['lone_survivor']){
@@ -3323,7 +3323,7 @@ const tauCetiModules = {
             },
             post(){
                 if (global.resource.Elerium.diff >= 10){
-                    global.tauceti.alien_space_station.on = 1; 
+                    global.tauceti.alien_space_station.on = 1;
                 }
                 renderTauCeti();
             }
@@ -3523,7 +3523,7 @@ for (let i=1; i<9; i++){
             }
             return false;
         }
-    }; 
+    };
 }
 
 function matrixProjection(){
@@ -3605,7 +3605,7 @@ export function renderTauCeti(){
         let show = region.replace("tau_","");
         if (global.settings.tau[`${show}`]){
             let name = typeof tauCetiModules[region].info.name === 'string' ? tauCetiModules[region].info.name : tauCetiModules[region].info.name();
-            
+
             let property = ``;
             if (tauCetiModules[region].info.hasOwnProperty('prop')){
                 property = tauCetiModules[region].info.prop();
@@ -4995,7 +4995,7 @@ export function jumpGateShutdown(){
 
     clearShipDrag();
     clearElement($('#shipList'));
-    
+
     Object.keys(actions.city).forEach(function (k){
         if (global.city.hasOwnProperty(k) && global.city[k].hasOwnProperty('count')){
             if (global.race['hooved']){
@@ -5114,7 +5114,7 @@ export function jumpGateShutdown(){
 
     global.tauceti['tauceti_casino'] = { count: 0, on: 0 };
     global.tauceti['tau_housing'] = { count: 0 };
-    
+
     let pop = support_on['colony'] * tauCetiModules.tau_home.colony.citizens();
     if (global.resource[global.race.species].amount > pop){ global.resource[global.race.species].amount = pop; }
 

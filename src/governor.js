@@ -258,7 +258,7 @@ function genGovernor(setSize){
         }
         governors.push({ bg: bg, t: title, n: name });
     }
-    
+
     return governors;
 }
 
@@ -460,7 +460,7 @@ export function drawnGovernOffice(){
                 global.race.governor.config.spyop[gov] = gov === 'gov3' ? ['influence','sabotage'] : ['sabotage','incite','influence'];
             });
         }
-        
+
         let contain = $(`<div class="tConfig" v-show="showTask('spyop')"><div class="has-text-warning">${loc(`gov_task_spyop`)}</div></div>`);
         options.append(contain);
         Object.keys(global.civic.foreign).forEach(function (gov){
@@ -561,7 +561,7 @@ export function drawnGovernOffice(){
 
     vBind({
         el: '#govOffice',
-        data: { 
+        data: {
             t: global.race.governor.tasks,
             c: global.race.governor.config,
             r: global.resource
@@ -644,7 +644,7 @@ export function drawnGovernOffice(){
     {
         elm: `#govOffice .bg`,
     });
-    
+
     Object.keys(global.civic.foreign).forEach(function (gov){
         dragSpyopList(gov);
     });
@@ -854,7 +854,7 @@ export const gov_tasks = {
                         }
                     }
                 });
-                
+
                 crateSet = active !== 0 ? Math.floor(crates / active) : 0;
                 containerSet = active !== 0 ? Math.floor(containers / active): 0;
                 crates -= Math.floor(crateSet * active);
@@ -1111,7 +1111,7 @@ export const gov_tasks = {
                     let set = (global.resource[res].amount + trade - craft >= global.resource[res].max * 0.999 - 1) || (global.race.governor.config.trash[res] && !global.race.governor.config.trash[res].s)
                         ? Math.floor(global.interstellar.mass_ejector[res] + global.resource[res].diff)
                         : 0;
-                    
+
                     if (global.race.governor.config.trash[res] && set < global.race.governor.config.trash[res].v && global.race.governor.config.trash[res].s){
                         set = Math.abs(global.race.governor.config.trash[res].v);
                     }

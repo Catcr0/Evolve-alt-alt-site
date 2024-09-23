@@ -1621,7 +1621,7 @@ function fastLoop(){
                 r_mass += 0.225 * global.tech['roid_eject'] * (1 + (global.tech['roid_eject'] / 12));
             }
             let gWell = 1 + (global.stats.achieve['escape_velocity'] && global.stats.achieve.escape_velocity['h'] ? global.stats.achieve.escape_velocity['h'] * 0.02 : 0);
-            let power = powerModifier(20 + ((r_mass - 8) * waves) + (global.interstellar.stellar_engine.exotic * waves * 10)) * gWell;
+            let power = powerModifier((20 + ((r_mass - 8) * waves) + (global.interstellar.stellar_engine.exotic * waves * 10)) * gWell);
             max_power -= power;
             power_grid += power;
             power_generated[loc('tech_stellar_engine')] = power;
@@ -5128,7 +5128,7 @@ function fastLoop(){
             let delta = (shock_base + tank_base) * global_multiplier * synd;
             modRes('Cipher', delta * time_multiplier);
         }
-        
+
         if(global.portal['oven_complete'] && p_on['oven_complete'] && !global.tech['dish_reset'] && global.portal['devilish_dish'].done >= 100){
             global.tech['dish_reset'] = 1;
             drawTech();
@@ -9976,7 +9976,7 @@ function midLoop(){
                 renderFortress();
             }
         }
-        
+
         if(global.race['fasting'] && global.portal['oven_complete']){
             let progress = 0;
             if(p_on['oven_complete']){

@@ -50,8 +50,8 @@ export function warhead(){
 
         let srace = global.race.hasOwnProperty('srace') ? global.race.srace : false;
         let corruption = global.race.hasOwnProperty('corruption') && global.race.corruption > 1 ? global.race.corruption - 1 : 0;
-        global['race'] = { 
-            species : 'protoplasm', 
+        global['race'] = {
+            species : 'protoplasm',
             gods: god,
             old_gods: old_god,
             rapid_mutation: 1,
@@ -66,14 +66,14 @@ export function warhead(){
         if (srace){
             global.race['srace'] = srace;
         }
-        
+
         resetCommon({
-            orbit: orbit, 
-            biome: biome, 
-            ptrait: atmo, 
+            orbit: orbit,
+            biome: biome,
+            ptrait: atmo,
             geology: geo
         });
-        
+
         save.setItem('evolved',LZString.compressToUTF16(JSON.stringify(global)));
         window.location.reload();
     }
@@ -119,7 +119,7 @@ export function bioseed(){
         }
     });
     unlockAchieve(`genus_${genus}`);
-    
+
     if (global.race['gravity_well']){
         unlockAchieve(`escape_velocity`);
     }
@@ -207,9 +207,9 @@ export function bioseed(){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: false
     });
 
@@ -278,9 +278,9 @@ export function cataclysm_end(){
         }
 
         resetCommon({
-            orbit: global.city.calendar.orbit, 
-            biome: global.city.biome, 
-            ptrait: global.city.ptrait, 
+            orbit: global.city.calendar.orbit,
+            biome: global.city.biome,
+            ptrait: global.city.ptrait,
             geology: global.city.geology
         });
 
@@ -402,9 +402,9 @@ export function big_bang(){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: false
     });
 
@@ -498,9 +498,9 @@ export function vacuumCollapse(){
         }
 
         resetCommon({
-            orbit: orbit, 
-            biome: biome, 
-            ptrait: atmo, 
+            orbit: orbit,
+            biome: biome,
+            ptrait: atmo,
             geology: false
         });
 
@@ -600,9 +600,9 @@ export function ascend(){
     });
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: geo
     });
 
@@ -676,7 +676,7 @@ export function descension(){
         if (global.tech['dl_reset']){
             global.stats.spire[affix]['dlstr'] = 0;
         }
-        else { 
+        else {
             if (global.stats.spire[affix].hasOwnProperty('dlstr')){
                 global.stats.spire[affix].dlstr++;
             }
@@ -713,9 +713,9 @@ export function descension(){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: geo
     });
 
@@ -803,9 +803,9 @@ export function terraform(planet){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: geo
     });
 
@@ -877,9 +877,9 @@ export function aiApocalypse(){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: geo
     });
 
@@ -961,9 +961,9 @@ export function matrix(){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: geo
     });
 
@@ -1045,9 +1045,9 @@ export function retirement(){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: geo
     });
 
@@ -1129,9 +1129,9 @@ export function gardenOfEden(){
     }
 
     resetCommon({
-        orbit: orbit, 
-        biome: biome, 
-        ptrait: atmo, 
+        orbit: orbit,
+        biome: biome,
+        ptrait: atmo,
         geology: geo
     });
 
@@ -1207,4 +1207,3 @@ function trackWomling(){
         unlockAchieve('overlord',uni === 'm' ? true : false,alevel(),uni);
     }
 }
-

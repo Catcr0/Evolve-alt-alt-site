@@ -1154,18 +1154,16 @@ export function timeFormat(time){
 export function powerModifier(energy){
     if (global.race.universe === 'antimatter'){
         energy *= darkEffect('antimatter');
-        energy = +energy.toFixed(2);
     }
     if (astrologySign() === 'leo'){
         energy *= 1 + (astroVal('leo')[0] / 100);
-        energy = +energy.toFixed(2);
     }
-    return energy;
+    return parseFloat(energy.toFixed(2));
 }
 
 export function powerCostMod(energy){
     if (global.race['emfield']){
-        return +(energy * 1.5).toFixed(2);
+        return parseFloat((energy * 1.5).toFixed(2));
     }
     return energy;
 }
@@ -1401,7 +1399,7 @@ export const calcPillar = (function(){
 export function challenge_multiplier(value,type,decimals,inputs){
     decimals = decimals || 0;
     inputs = inputs || {};
-    
+
     let challenge_level = inputs.genes;
     if (challenge_level === undefined){
         challenge_level = alevel() - 1;
@@ -2092,7 +2090,7 @@ export function svgIcons(icon){
           </g>`;
         case 'meat':
             return `<path d="M0.26,147.54c0.03,9.81,8.69,19.93,16.89,24.05c5.21,2.61,8.18,9.46,12.72,13.81c5.23,5.01,10.4,11.42,16.8,13.59 c17.18,5.81,35.19-14.63,32.08-29.95c-1.06-5.24-0.61-12.9,2.51-16.31c3.18-3.47,10.44-3.48,16.02-4.26 c12.61-1.76,25.38-2.53,37.9-4.76c6.75-1.2,14.1-3.23,19.48-7.22c11.88-8.81,24.21-17.81,33.6-29.08 c14.98-17.96,15.19-45.27,3.06-65.42c-4.04-6.72-7.15-14.9-12.95-19.46c-11.04-8.66-23.71-15.23-35.79-22.5  c-0.41-0.25-2.4,1.08-2.71,2c-0.62,1.82-0.58,3.86-0.82,5.81c-0.56,4.48-1.93,7.93-4.65,12.19c-6.13,9.62-14.8,8.16-22.83,10.88 c-4.74,1.61-8.27,6.55-12.73,9.39c-4.74,3.01-9.7,6.25-15.01,7.52c-2.92,0.7-7.29-1.75-10.06-3.98c-8.91-7.2-11.87-0.5-13.71,6.14  c-3.48,12.54-6.44,25.26-8.8,38.06c-1.1,5.97-0.3,12.29-0.37,18.45c-0.12,10.04-5.06,15.03-15.05,14.97  c-4.4-0.03-8.83-0.87-13.17-0.52C14.13,121.63-2.27,136.46,0.26,147.54z"/>`;
-               
+
     }
 }
 
@@ -2511,7 +2509,7 @@ export function flib(func,val,val2){
             return races[global.race.species].name;
         }
         case 'curve':
-        {   
+        {
             let exp = val2 || 1.5;
             return 1-((1-(val))**exp);
         }

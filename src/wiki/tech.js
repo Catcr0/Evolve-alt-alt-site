@@ -902,7 +902,7 @@ const extraInformation = {
         loc(`wiki_tech_cyber_limbs`)
     ],
     slave_pens: [
-        loc(`wiki_tech_building_unlock`,[loc(`city_slave_pen`)])
+        loc(`wiki_tech_building_unlock`,[loc(`city_slave_housing`)])
     ],
     slave_market: [
         loc(`wiki_tech_slave_market`)
